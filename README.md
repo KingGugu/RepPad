@@ -1,6 +1,6 @@
-## Anonymous code for Review
+# Anonymous code for Review
 
-# Run the Code
+## Run the Code
 
 Go to the `src` folder in the `SASRec` or `GRU4Rec` directory, then run the following commands. 
 
@@ -28,5 +28,7 @@ python main.py --data_name=Home --aug_type=2 --model_idx=5
 python main.py --data_name=Yelp --aug_type=2 --model_idx=5
 ```
 
-We also provide the log files and trained weights on these five datasets in the `src/output` directory. 
+## Log Files
+
+We also provide some log files and trained weights on these five datasets of `SASRec` in the `src/output` directory. 
 `xxxxx-1.txt` is the performance of the original model, `xxxxx-2.txt` is the performance after adding RepPad.
