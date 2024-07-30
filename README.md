@@ -1,4 +1,4 @@
-# TiCoSeRec
+# RepPad
 Official source code for RecSys 2024 paper: [Repeated Padding for Sequential Recommendation](https://arxiv.org/abs/2403.06372)
 
 We provide implementations of the two most representative sequential recommendation models, GRU4Rec and SASRec. You can quickly apply RepPad to your sequential model based on the pseudo-code provided in the paper.
