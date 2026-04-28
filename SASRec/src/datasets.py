@@ -94,6 +94,65 @@ class SASRecDataset(Dataset):
                     input_ids = final_input_ids
                     target_pos = final_target_pos
                 answer = [0]  # no use
+            
+            
+            if self.aug_type == 3:
+
+                '''random(1,max) repeated padding plus (RepPad+) with delimiter 0'''
+                if len(items[:-3]) > self.max_len - 2:
+                    input_ids = items[:-3]
+                    target_pos = items[1:-2]
+
+                elif int(self.max_len / len(items[:-3])) <= 1:
+                    final_input_ids = items[:-3]
+                    final_target_pos = items[1:-2]
+                    sub_sequence_len = self.max_len - 1 - len(final_input_ids)
+                    start_index = random.randint(0, len(final_input_ids) - sub_sequence_len)
+                    final_input_ids = final_input_ids[start_index:start_index + sub_sequence_len] + [0] + final_input_ids
+                    final_target_pos = final_target_pos[start_index:start_index + sub_sequence_len] + [0] + final_target_pos
+                    input_ids = final_input_ids
+                    target_pos = final_target_pos
+
+                else:
+                    final_input_ids = items[:-3]
+                    final_target_pos = items[1:-2]
+                    max_pad_num = int(self.max_len / len(final_input_ids))
+                    pad_num = random.randint(1, max_pad_num)
+                    final_input_ids = (final_input_ids + [0]) * pad_num + final_input_ids
+                    final_target_pos = (final_target_pos + [0]) * pad_num + final_target_pos
+                    input_ids = final_input_ids
+                    target_pos = final_target_pos
+
+                answer = [0]  # no use
+
+            if self.aug_type == 4:
+
+                '''random(1,max) repeated padding plus (RepPad+) without delimiter 0'''
+                if len(items[:-3]) > self.max_len - 1:
+                    input_ids = items[:-3]
+                    target_pos = items[1:-2]
+
+                elif int(self.max_len / len(items[:-3])) <= 1:
+                    final_input_ids = items[:-3]
+                    final_target_pos = items[1:-2]
+                    sub_sequence_len = self.max_len - len(final_input_ids)
+                    start_index = random.randint(0, len(final_input_ids) - sub_sequence_len)
+                    final_input_ids = final_input_ids[start_index:start_index + sub_sequence_len] + final_input_ids
+                    final_target_pos = final_target_pos[start_index:start_index + sub_sequence_len] + final_target_pos
+                    input_ids = final_input_ids
+                    target_pos = final_target_pos
+
+                else:
+                    final_input_ids = items[:-3]
+                    final_target_pos = items[1:-2]
+                    max_pad_num = int(self.max_len / len(final_input_ids))
+                    pad_num = random.randint(1, max_pad_num)
+                    final_input_ids = final_input_ids * pad_num + final_input_ids
+                    final_target_pos = final_target_pos * pad_num + final_target_pos
+                    input_ids = final_input_ids
+                    target_pos = final_target_pos
+
+                answer = [0]  # no use
 
         elif self.data_type == 'valid':
             input_ids = items[:-2]
