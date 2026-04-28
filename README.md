@@ -133,7 +133,7 @@ Table 4 from `revise/main.pdf` (Hyper-parameter settings and tuning ranges of ma
 | initializer_range | 0.02 | 0.02 | 0.02 | 0.02 |
 | k_interests | - | 5 | - | - |
 
-For RepPad/RepPad+, the backbone hyper-parameters are kept the same as their corresponding original models for fair comparison. Code implementations of other backbones will be released after the paper is accepted.
+For RepPad/RepPad+, the backbone hyper-parameters are kept the same as their corresponding original models for fair comparison. Code implementations of all other backbones will be released after the RepPad+ paper is accepted.
 
 ## Pseudocode
 
