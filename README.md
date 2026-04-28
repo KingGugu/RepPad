@@ -16,6 +16,20 @@ Current built-in datasets under both `GRU4Rec/data` and `SASRec/data`:
 - `LastFM`
 - `ml-1m`
 
+## Data Processing
+
+We added two preprocessing scripts under `Data Processing` for converting raw interaction files into the format used by this repository:
+
+- `Data Processing/inter2csv.py`: reads `.inter` files, applies k-core filtering, and exports a processed `.csv` file.
+- `Data Processing/csv2txt_pureid.py`: remaps user/item IDs and converts the processed `.csv` file into the final `.txt` sequence format for training.
+
+You can update the input/output file names in each script (e.g., `data_file`, `file_name_out`, `dataset`, `date_file_name`) and then run them in order:
+
+```bash
+python "Data Processing/inter2csv.py"
+python "Data Processing/csv2txt_pureid.py"
+```
+
 ## Run the Original Model and RepPad
 
 Go to the `src` folder in either `SASRec` or `GRU4Rec`, then run:
