@@ -1,4 +1,4 @@
-## RepPad
+## RepPad and RepPad+
 
 Official source code for RecSys 2024 paper [Repeated Padding for Sequential Recommendation](https://arxiv.org/abs/2403.06372v2) (RepPad) and [Repeated Padding+: Simple yet Effective Data Augmentation Plugin for Sequential Recommendation](https://arxiv.org/abs/2403.06372v3) (RepPad+).
 
