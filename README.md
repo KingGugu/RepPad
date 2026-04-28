@@ -1,17 +1,41 @@
 ## RepPad
+Official source code for RecSys 2024 paper: [Repeated Padding for Sequential Recommendation](https://arxiv.org/abs/2403.06372)
 
-In this repository, we provide official source code for RepPad its improved variants.
-
-RecSys 2024 paper (RepPad): [Repeated Padding for Sequential Recommendation](https://arxiv.org/abs/2403.06372v2)
-
-Under Review paper (RepPad-ENS): [Why is Repeated Padding Effective for Sequential Recommendation?]()
-
+We provide implementations of the two most representative sequential recommendation models, GRU4Rec and SASRec. You can quickly apply RepPad to your sequential model based on the pseudo-code provided in the paper.
 
 ## Run the Code
 
-Go to the corresponding directory, where you will find the detailed introduction and running instructions. 
+Go to the `src` folder in the `SASRec` or `GRU4Rec` directory, then run the following commands. 
 
-We also provide some log files and trained weights for our methods.
+`--aug_type=0` represents not using RepPad (traditional padding).
+`--aug_type=1` represents using random(1,max) repeated padding.
+`--aug_type=2` represents using random(1,max) repeated padding with delimiter 0.
+
+```
+python main.py --data_name=Toys_and_Games --aug_type=0 --model_idx=3
+python main.py --data_name=Beauty --aug_type=0 --model_idx=3
+python main.py --data_name=Sports_and_Outdoors --aug_type=0 --model_idx=3
+python main.py --data_name=Home --aug_type=0 --model_idx=3
+python main.py --data_name=Yelp --aug_type=0 --model_idx=3
+
+python main.py --data_name=Toys_and_Games --aug_type=1 --model_idx=4
+python main.py --data_name=Beauty --aug_type=1 --model_idx=4
+python main.py --data_name=Sports_and_Outdoors --aug_type=1 --model_idx=4
+python main.py --data_name=Home --aug_type=1 --model_idx=4
+python main.py --data_name=Yelp --aug_type=1 --model_idx=4
+
+python main.py --data_name=Toys_and_Games --aug_type=2 --model_idx=5
+python main.py --data_name=Beauty --aug_type=2 --model_idx=5
+python main.py --data_name=Sports_and_Outdoors --aug_type=2 --model_idx=5
+python main.py --data_name=Home --aug_type=2 --model_idx=5
+python main.py --data_name=Yelp --aug_type=2 --model_idx=5
+```
+
+
+## Log Files
+
+We also provide some log files and trained weights on these five datasets of `SASRec` in the `src/output` directory. 
+`xxxxx-1.txt` is the performance of the original model, `xxxxx-2.txt` is the performance after adding RepPad.
 
 
 ## Acknowledgement
